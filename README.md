@@ -11,7 +11,7 @@ Here are the links to the OpenBB SDK and AutoGPT repo.
 **Autogpt repo: https://github.com/Significant-Gravitas/Auto-GPT/**
 
 
-# AutoGPT install highligts repeated for convenience:
+# AutoGPT install highligts repeated for convenience
 ## 📋 Requirements
 
 - Environment (pick one)
