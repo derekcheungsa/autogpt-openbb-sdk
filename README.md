@@ -2,6 +2,10 @@
 
 This fork was created to allow users interested in learning how to integrate analysis of equities using OpenBB SDK to have a playground for their use cases.  When AutoGPT matures it's plugin architecture, this repo will be updated to utilize it.  In the meantime, we'll sync-up the changes to the AutoGPT repo on a periodic basis.
 
+One of the objectives with this repo is to share use cases.  As this is very new technology, the use cases and match with the strengths of this tech are not well defined.  Please add your ideas through creating issues in this git repo.
+
+
+
 Here are the links to the OpenBB SDK and AutoGPT repo.  
 
 **OpenBB SDK  : https://docs.openbb.co/sdk/**
