@@ -6,6 +6,8 @@ Please see the file in commands/openbb_commands.py to for examples and add your 
 
 **OpenBB SDK  : https://docs.openbb.co/sdk/**
 
+**OpenBB repo : https://github.com/OpenBB-finance/OpenBBTerminal**
+
 **Autogpt repo: https://github.com/Significant-Gravitas/Auto-GPT/**
 
 *Highlights on install from Autogpt repo repeated here for convenience:*
