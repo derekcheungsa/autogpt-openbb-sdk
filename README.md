@@ -1,6 +1,6 @@
 # Auto-GPT Fork to include OpenBB SDK API
 
-This fork was created to allow users interested in learning how to integrate analysis of equities using OpenBB SDK to have a playground for their use cases.
+This fork was created to allow users interested in learning how to integrate analysis of equities using OpenBB SDK to have a playground for their use cases.  When AutoGPT matures it's plugin architecture, this repo may be updated to utilize it.  In the meantime, we'll sync-up the changes to the AutoGPT repo on a periodic basis.
 
 Please see the file in commands/openbb_commands.py to for examples and add your commands there.  The instructions from the main Auto-GPT repo follows:
 
