@@ -4,6 +4,7 @@ This fork was created to allow users interested in learning how to integrate ana
 
 Please see the file in commands/openbb_commands.py to for examples and add your commands there.  The instructions from the main Auto-GPT repo follows:
 
+**Autogpt repo: https://github.com/Significant-Gravitas/Auto-GPT/releases/latest.**
 
 # Auto-GPT: An Autonomous GPT-4 Experiment
 [![Unit Tests](https://img.shields.io/github/actions/workflow/status/Significant-Gravitas/Auto-GPT/ci.yml?label=unit%20tests)](https://github.com/Significant-Gravitas/Auto-GPT/actions/workflows/ci.yml)
@@ -17,7 +18,7 @@ Please see the file in commands/openbb_commands.py to for examples and add your 
 
 ### 🔴 🔴 🔴  Urgent: USE `stable` not `master`  🔴 🔴 🔴
 
-**Download the latest `stable` release from here: https://github.com/Significant-Gravitas/Auto-GPT/releases/latest.**
+**Autogpt repo: https://github.com/Significant-Gravitas/Auto-GPT/releases/latest.**
 The `master` branch may often be in a **broken** state.
 
 <hr/>
