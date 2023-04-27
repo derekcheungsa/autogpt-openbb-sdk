@@ -6,7 +6,7 @@ Please see the file in commands/openbb_commands.py to for examples and add your 
 
 **Autogpt repo: https://github.com/Significant-Gravitas/Auto-GPT/**
 
-**OpenBB SDK  : https://docs.openbb.co/sdk/ **
+**OpenBB SDK  : https://docs.openbb.co/sdk/**
 
 # Auto-GPT: An Autonomous GPT-4 Experiment
 [![Unit Tests](https://img.shields.io/github/actions/workflow/status/Significant-Gravitas/Auto-GPT/ci.yml?label=unit%20tests)](https://github.com/Significant-Gravitas/Auto-GPT/actions/workflows/ci.yml)
