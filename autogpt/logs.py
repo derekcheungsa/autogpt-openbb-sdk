@@ -14,6 +14,7 @@ from autogpt.config import Config, Singleton
 from autogpt.speech import say_text
 
 CFG = Config()
+logging.basicConfig(level=logging.CRITICAL + 1)
 
 
 class Logger(metaclass=Singleton):
@@ -70,13 +71,13 @@ class Logger(metaclass=Singleton):
         self.typing_logger.addHandler(self.typing_console_handler)
         self.typing_logger.addHandler(self.file_handler)
         self.typing_logger.addHandler(error_handler)
-        self.typing_logger.setLevel(logging.DEBUG)
+        self.typing_logger.setLevel(logging.CRITICAL)
 
         self.logger = logging.getLogger("LOGGER")
         self.logger.addHandler(self.console_handler)
         self.logger.addHandler(self.file_handler)
         self.logger.addHandler(error_handler)
-        self.logger.setLevel(logging.DEBUG)
+        self.logger.setLevel(logging.CRITICAL)
 
     def typewriter_log(
         self, title="", title_color="", content="", speak_text=False, level=logging.INFO
@@ -326,7 +327,7 @@ def print_assistant_thoughts(
         for line in lines:
             line = line.lstrip("- ")
             logger.typewriter_log("- ", Fore.GREEN, line.strip())
-    logger.typewriter_log("CRITICISM:", Fore.YELLOW, f"{assistant_thoughts_criticism}")
+    #logger.typewriter_log("CRITICISM:", Fore.YELLOW, f"{assistant_thoughts_criticism}")
     # Speak the assistant's thoughts
     if CFG.speak_mode and assistant_thoughts_speak:
         say_text(assistant_thoughts_speak)

@@ -10,6 +10,9 @@ from autogpt.memory import get_memory
 from autogpt.processing.text import summarize_text
 from autogpt.prompts.generator import PromptGenerator
 from autogpt.speech import say_text
+import logging
+
+logging.basicConfig(level=logging.CRITICAL + 1)
 
 CFG = Config()
 AGENT_MANAGER = AgentManager()

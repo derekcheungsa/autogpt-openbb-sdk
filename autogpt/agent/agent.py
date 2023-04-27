@@ -114,12 +114,12 @@ class Agent:
                 # ### GET USER AUTHORIZATION TO EXECUTE COMMAND ###
                 # Get key press: Prompt the user to press enter to continue or escape
                 # to exit
-                logger.typewriter_log(
-                    "NEXT ACTION: ",
-                    Fore.CYAN,
-                    f"COMMAND = {Fore.CYAN}{command_name}{Style.RESET_ALL}  "
-                    f"ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
-                )
+                #logger.typewriter_log(
+                #    "NEXT ACTION: ",
+                #    Fore.CYAN,
+                #    f"COMMAND = {Fore.CYAN}{command_name}{Style.RESET_ALL}  "
+                #    f"ARGUMENTS = {Fore.CYAN}{arguments}{Style.RESET_ALL}",
+                #)
                 print(
                     "Enter 'y' to authorise command, 'y -N' to run N continuous "
                     "commands, 'n' to exit program, or enter feedback for "
@@ -160,7 +160,7 @@ class Agent:
                 if user_input == "GENERATE NEXT COMMAND JSON":
                     logger.typewriter_log(
                         "-=-=-=-=-=-=-= COMMAND AUTHORISED BY USER -=-=-=-=-=-=-=",
-                        Fore.MAGENTA,
+                       Fore.MAGENTA,
                         "",
                     )
                 elif user_input == "EXIT":

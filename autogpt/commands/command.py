@@ -1,10 +1,11 @@
 import importlib
 import inspect
 from typing import Any, Callable, Optional
+import logging
 
 # Unique identifier for auto-gpt commands
 AUTO_GPT_COMMAND_IDENTIFIER = "auto_gpt_command"
-
+logging.basicConfig(level=logging.CRITICAL + 1)
 
 class Command:
     """A class representing a command.

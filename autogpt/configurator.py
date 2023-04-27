@@ -46,7 +46,7 @@ def create_config(
 
     if debug:
         logger.typewriter_log("Debug Mode: ", Fore.GREEN, "ENABLED")
-        CFG.set_debug_mode(True)
+        CFG.set_debug_mode(False)
 
     if continuous:
         logger.typewriter_log("Continuous Mode: ", Fore.RED, "ENABLED")

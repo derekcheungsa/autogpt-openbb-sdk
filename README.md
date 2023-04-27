@@ -1,3 +1,10 @@
+# Auto-GPT Fork to include OpenBB SDK API
+
+This fork was created to allow users interested in learning how to integrate analysis of equities using OpenBB SDK to have a playground for their use cases.
+
+Please see the file in commands/openbb_commands.py to for examples and add your commands there.  The instructions from the main Auto-GPT repo follows:
+
+
 # Auto-GPT: An Autonomous GPT-4 Experiment
 [![Unit Tests](https://img.shields.io/github/actions/workflow/status/Significant-Gravitas/Auto-GPT/ci.yml?label=unit%20tests)](https://github.com/Significant-Gravitas/Auto-GPT/actions/workflows/ci.yml)
 [![Discord Follow](https://dcbadge.vercel.app/api/server/autogpt?style=flat)](https://discord.gg/autogpt)

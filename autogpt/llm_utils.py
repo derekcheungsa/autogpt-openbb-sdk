@@ -34,7 +34,7 @@ def call_ai_function(
         str: The response from the function
     """
     if model is None:
-        model = CFG.smart_llm_model
+        model = CFG.fast_llm_model
     # For each arg, if any are None, convert to "None":
     args = [str(arg) if arg is not None else "None" for arg in args]
     # parse args to comma separated string

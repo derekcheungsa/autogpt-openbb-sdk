@@ -1,5 +1,5 @@
 import argparse
-import logging
+import 
 
 from autogpt.commands.file_operations import ingest_file, search_files
 from autogpt.config import Config
@@ -8,15 +8,15 @@ from autogpt.memory import get_memory
 cfg = Config()
 
 
-def configure_logging():
+def configure_():
     .basicConfig(
         filename="log-ingestion.txt",
         filemode="a",
         format="%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s",
         datefmt="%H:%M:%S",
-        level=logging.CRITICAL,
+        level=.CRITICAL,
     )
-    return logging.getLogger("AutoGPT-Ingestion")
+    return .getLogger("AutoGPT-Ingestion")
 
 
 def ingest_directory(directory, memory, args):
@@ -35,7 +35,7 @@ def ingest_directory(directory, memory, args):
 
 
 def main() -> None:
-    logger = configure_logging()
+    logger = configure_()
 
     parser = argparse.ArgumentParser(
         description="Ingest a file or a directory with multiple files into memory. "
