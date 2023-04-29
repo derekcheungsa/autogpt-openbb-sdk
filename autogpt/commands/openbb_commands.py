@@ -30,6 +30,7 @@ def get_financial_metrics(ticker, statements):
     df = df.drop(columns=['Change', 'Volume', 'Earnings', 'Price','Market Cap'])
 
     # Format the output better
+    df=df.fillna(0)
     df['Dividend']=df['Dividend'].apply(lambda x: "{0:.1f}%".format(x*100))
     df['ROA']=df['ROA'].apply(lambda x: "{0:.1f}%".format(x*100))
     df['ROE']=df['ROE'].apply(lambda x: "{0:.1f}%".format(x*100))
@@ -37,6 +38,45 @@ def get_financial_metrics(ticker, statements):
     df['Gross M']=df['Gross M'].apply(lambda x: "{0:.1f}%".format(x*100))
     df['Oper M']=df['Oper M'].apply(lambda x: "{0:.1f}%".format(x*100))
     df['Profit M']=df['Profit M'].apply(lambda x: "{0:.1f}%".format(x*100))                          
+    json_string = df.to_json(orient='records')
+    data = json.dumps(json_string)
+    return data   
+
+@command(
+    "get_performance_metrics",
+    "Performance metrics for a ticker",
+    '"ticker": "<ticker>", "statements": "<statements>"',
+)
+def get_performance_metrics(ticker, statements):    
+    if ticker.startswith('$'):
+        ticker= ticker[1:]
+
+    df=openbb.stocks.ca.screener([ticker], data_type="ownership")    
+    df = df.drop(columns=['Change', 'Volume', 'Earnings', 'Price','Market Cap'])
+    df = df.drop(columns=['Rel Volume', 'Avg Volume', 'Price','Change','Volume'])
+    df ['Perf Week']=df ['Perf Week'].apply(lambda x: "{0:.1f}%".format(x*100))
+    df ['Perf Month']=df ['Perf Month'].apply(lambda x: "{0:.1f}%".format(x*100))
+    df ['Perf Quart']=df ['Perf Quart'].apply(lambda x: "{0:.1f}%".format(x*100))
+    df ['Perf Half']=df ['Perf Half'].apply(lambda x: "{0:.1f}%".format(x*100))
+    df ['Perf Year']=df ['Perf Year'].apply(lambda x: "{0:.1f}%".format(x*100))
+    df ['Perf YTD']=df ['Perf YTD'].apply(lambda x: "{0:.1f}%".format(x*100))
+    df = df.fillna("")
+                         
+    json_string = df.to_json(orient='records')
+    data = json.dumps(json_string)
+    return data   
+
+@command(
+    "get_ownership_metrics",
+    "Ownership metrics for a ticker",
+    '"ticker": "<ticker>", "statements": "<statements>"',
+)
+def get_ownership_metrics(ticker, statements):    
+    if ticker.startswith('$'):
+        ticker= ticker[1:]
+    df=openbb.stocks.ca.screener([ticker], data_type="ownership")
+    df = df.drop(columns=['Market Cap', 'Change', 'Volume', 'Avg Volume', 'Price'])
+    df= df.fillna("")
     json_string = df.to_json(orient='records')
     data = json.dumps(json_string)
     return data   
@@ -50,23 +90,7 @@ def get_technical_analysis_summary(ticker):
     if ticker.startswith('$'):
         ticker= ticker[1:]
     return openbb.stocks.ta.summary(ticker)   
-        
-
-@command(
-    "get_sector_valuations",
-    "Get best sector valuations",
-    '"sector": "<sector>"',
-)
-def get_sector_valuations(sector: str) -> str:
-    # Assumes there is a preset that is available by sector 
-    df=openbb.stocks.screener.screener_data(preset_loaded=f"{sector}_value_stocks.ini",data_type = 'valuation')
-    df.sort_values(by='P/E', ascending=True, inplace=True)
-    ticker_df = df[['Ticker']]
-    ticker_df=ticker_df.head(3)
-    json_string = ticker_df.to_json(orient='records')
-    data = json.dumps(json_string)
-    return data
-
+       
 @command(
     "get_analyst_ratings",
     "Get analyst ratings",

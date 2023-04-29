@@ -327,7 +327,7 @@ def print_assistant_thoughts(
         for line in lines:
             line = line.lstrip("- ")
             logger.typewriter_log("- ", Fore.GREEN, line.strip())
-    #logger.typewriter_log("CRITICISM:", Fore.YELLOW, f"{assistant_thoughts_criticism}")
+    logger.typewriter_log("CRITICISM:", Fore.YELLOW, f"{assistant_thoughts_criticism}")
     # Speak the assistant's thoughts
     if CFG.speak_mode and assistant_thoughts_speak:
         say_text(assistant_thoughts_speak)
