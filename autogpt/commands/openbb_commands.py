@@ -43,6 +43,24 @@ def get_financial_metrics(ticker, statements):
     return data   
 
 @command(
+    "get_valuation_metrics",
+    "Valuation metrics for a ticker",
+    '"ticker": "<ticker>", "statements": "<statements>"',
+)
+def get_valuation_metrics(ticker, statements):    
+    if ticker.startswith('$'):
+        ticker= ticker[1:]
+
+    df=openbb.stocks.ca.screener([ticker], data_type="valuation")    
+    df = df.drop(columns=['Change', 'Volume', 'Price', 'EPS next 5Y', 'PEG', 'Sales past 5Y'])
+    df=df.fillna(0)
+    df['Market Cap']=df['Market Cap'].apply(lambda x: "${0:.0f} M".format(x/1000000))
+
+    json_string = df.to_json(orient='records')
+    data = json.dumps(json_string)
+    return data   
+
+@command(
     "get_performance_metrics",
     "Performance metrics for a ticker",
     '"ticker": "<ticker>", "statements": "<statements>"',
@@ -51,9 +69,9 @@ def get_performance_metrics(ticker, statements):
     if ticker.startswith('$'):
         ticker= ticker[1:]
 
-    df=openbb.stocks.ca.screener([ticker], data_type="ownership")    
-    df = df.drop(columns=['Change', 'Volume', 'Earnings', 'Price','Market Cap'])
-    df = df.drop(columns=['Rel Volume', 'Avg Volume', 'Price','Change','Volume'])
+    df=openbb.stocks.ca.screener([ticker], data_type="performance")    
+    #df = df.drop(columns=['Change', 'Volume', 'Price','Market Cap'])
+    #df = df.drop(columns=['Rel Volume', 'Avg Volume', 'Price','Change','Volume'])
     df ['Perf Week']=df ['Perf Week'].apply(lambda x: "{0:.1f}%".format(x*100))
     df ['Perf Month']=df ['Perf Month'].apply(lambda x: "{0:.1f}%".format(x*100))
     df ['Perf Quart']=df ['Perf Quart'].apply(lambda x: "{0:.1f}%".format(x*100))
