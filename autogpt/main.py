@@ -131,6 +131,7 @@ def run_auto_gpt(
         "autogpt.commands.twitter",
         "autogpt.commands.web_selenium",
         "autogpt.commands.write_tests",
+        "autogpt.commands.openbb_commands",
         "autogpt.app",
         "autogpt.commands.task_statuses",
     ]

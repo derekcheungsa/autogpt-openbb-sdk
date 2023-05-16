@@ -220,17 +220,17 @@ def chat_with_ai(
             #  https://www.github.com/Torantulino/Auto-GPT"
 
             # Debug print the current context
-            logger.debug(f"Token limit: {token_limit}")
-            logger.debug(f"Send Token Count: {current_tokens_used}")
-            logger.debug(f"Tokens remaining for response: {tokens_remaining}")
-            logger.debug("------------ CONTEXT SENT TO AI ---------------")
-            for message in current_context:
+            #logger.debug(f"Token limit: {token_limit}")
+            #logger.debug(f"Send Token Count: {current_tokens_used}")
+            #logger.debug(f"Tokens remaining for response: {tokens_remaining}")
+            #logger.debug("------------ CONTEXT SENT TO AI ---------------")
+            #for message in current_context:
                 # Skip printing the prompt
-                if message["role"] == "system" and message["content"] == prompt:
-                    continue
-                logger.debug(f"{message['role'].capitalize()}: {message['content']}")
-                logger.debug("")
-            logger.debug("----------- END OF CONTEXT ----------------")
+            #    if message["role"] == "system" and message["content"] == prompt:
+            #        continue
+            #    logger.debug(f"{message['role'].capitalize()}: {message['content']}")
+            #    logger.debug("")
+            #logger.debug("----------- END OF CONTEXT ----------------")
             agent.log_cycle_handler.log_cycle(
                 agent.config.ai_name,
                 agent.created_at,

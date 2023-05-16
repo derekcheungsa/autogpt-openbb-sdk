@@ -240,4 +240,48 @@ def get_analyst_ratings(ticker: str) -> str:
     # Return the data
     return data
 
+@command(
+    "get_active_addresses",  # command name
+    "Retrieves the active addresses for a given cryptocurrency",  # command description
+    '"symbol": "<symbol>", "interval": "<interval>", "start_date": "<start_date>", "end_date": "<end_date>"' # command argument in JSON format
+)
+def get_active_addresses(symbol: str, interval: str, start_date: str, end_date: str) -> str:
+    """
+    This function retrieves the active addresses for a given cryptocurrency.
 
+    Parameters:
+    symbol (str): The symbol for the cryptocurrency.
+    interval (str): The interval for the active addresses data. Can be "24h", "7d", "30d", "3m", "6m", "1y", or "5y".
+    start_date (str): The starting date is a string in the format 'YYYY-MM-DD'.
+    end_date(str): The end date is a string in the format 'YYYY-MM-DD'.
+
+    Returns:
+    str: A JSON string representing the active addresses for the cryptocurrency.
+    """
+    active = openbb.crypto.dd.active(symbol=symbol, interval=interval, start_date=start_date, end_date=end_date)
+    json_string = active.to_json(orient='records')
+    data = json.dumps(json_string)
+    return data 
+
+@command(
+    "get_active_addresses",  # command name
+    "Retrieves the active addresses for a given cryptocurrency",  # command description
+    '"symbol": "<symbol>", "interval": "<interval>", "start_date": "<start_date>", "end_date": "<end_date>"' # command argument in JSON format
+)
+def get_active_addresses(symbol: str, interval: str, start_date: str, end_date: str) -> str:
+    """
+    This function retrieves the active addresses for a given cryptocurrency.
+
+    Parameters:
+    symbol (str): The symbol for the cryptocurrency.
+    interval (str): The interval for the active addresses data. Can be "24h", "7d", "30d", "3m", "6m", "1y", or "5y".
+    start_date (str): The starting date is a string in the format 'YYYY-MM-DD'.
+    end_date(str): The end date is a string in the format 'YYYY-MM-DD'.
+
+    Returns:
+    str: A JSON string representing the active addresses for the cryptocurrency.
+    """
+    active = openbb.crypto.dd.active(symbol=symbol, interval=interval, start_date=start_date, end_date=end_date)
+    json_string = active.to_json(orient='records')
+    data = json.dumps(json_string)
+    return data 

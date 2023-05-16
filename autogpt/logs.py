@@ -35,19 +35,19 @@ class Logger(metaclass=Singleton):
 
         # Create a handler for console which simulate typing
         self.typing_console_handler = TypingConsoleHandler()
-        self.typing_console_handler.setLevel(logging.INFO)
+        self.typing_console_handler.setLevel(logging.CRITICAL)
         self.typing_console_handler.setFormatter(console_formatter)
 
         # Create a handler for console without typing simulation
         self.console_handler = ConsoleHandler()
-        self.console_handler.setLevel(logging.DEBUG)
+        self.console_handler.setLevel(logging.CRITICAL)
         self.console_handler.setFormatter(console_formatter)
 
         # Info handler in activity.log
         self.file_handler = logging.FileHandler(
             os.path.join(log_dir, log_file), "a", "utf-8"
         )
-        self.file_handler.setLevel(logging.DEBUG)
+        self.file_handler.setLevel(logging.CRITICAL)
         info_formatter = AutoGptFormatter(
             "%(asctime)s %(levelname)s %(title)s %(message_no_color)s"
         )
@@ -74,12 +74,12 @@ class Logger(metaclass=Singleton):
         self.logger.addHandler(self.console_handler)
         self.logger.addHandler(self.file_handler)
         self.logger.addHandler(error_handler)
-        self.logger.setLevel(logging.DEBUG)
+        self.logger.setLevel(logging.CRITICAL)
 
         self.json_logger = logging.getLogger("JSON_LOGGER")
         self.json_logger.addHandler(self.file_handler)
         self.json_logger.addHandler(error_handler)
-        self.json_logger.setLevel(logging.DEBUG)
+        self.json_logger.setLevel(logging.CRITICAL)
 
         self.speak_mode = False
         self.chat_plugins = []
@@ -117,7 +117,7 @@ class Logger(metaclass=Singleton):
         title="",
         title_color="",
     ):
-        self._log(title, title_color, message, logging.INFO)
+        self._log(title, title_color, message, logging.DEBUG)
 
     def warn(
         self,
