@@ -3,30 +3,12 @@ import os
 
 import tweepy
 from dotenv import load_dotenv
-from llama_index import GPTSimpleVectorIndex, TwitterTweetReader
-from IPython.display import Markdown, display
-import os
+
 from autogpt.commands.command import command
 import logging
 import sys
 
-BEARER_TOKEN = os.getenv("TWITTER_BEARER_TOKEN")
 load_dotenv()
-logging.basicConfig(level=logging.CRITICAL + 1)
-
-#Prototype of getting stock tickers from twitter
-@command(
-    "stocks_from_tweet",
-    "Get stocks from twitter",
-    '',
-)
-def stocks_from_tweet() -> str:
-    reader = TwitterTweetReader(BEARER_TOKEN)
-    documents = reader.load_data(["mintzmyer"])
-
-    index = GPTSimpleVectorIndex.from_documents(documents)
-    response = index.query("Show stock tickers mentioned most positively")
-    return response
 
 
 @command(
