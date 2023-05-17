@@ -68,6 +68,10 @@ class Logger(metaclass=Singleton):
         self.typing_logger.addHandler(self.typing_console_handler)
         self.typing_logger.addHandler(self.file_handler)
         self.typing_logger.addHandler(error_handler)
+        formatter = logging.Formatter("%(message)s")
+        handler = logging.StreamHandler()
+        handler.setFormatter(formatter)
+        self.typing_logger.addHandler(handler)
         self.typing_logger.setLevel(logging.CRITICAL)
 
         self.logger = logging.getLogger("LOGGER")

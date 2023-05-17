@@ -113,20 +113,20 @@ def get_valuation_metrics(ticker: str, statements: str) -> str:
 )
 def get_performance_metrics(ticker: str, statements: str) -> str:
     """
-    This function retrieves the performance metrics for a given stock ticker.
+    This function retrieves the performance metrics for a given ticker ticker.
     
     Parameters:
-    ticker (str): The ticker symbol for the stock. It can be prefixed with a '$' symbol.
+    ticker (str): The ticker symbol for the ticker. It can be prefixed with a '$' symbol.
     statements (str): Not used in the current function. It could be used to specify financial statements to retrieve.
     
     Returns:
-    str: A JSON string representing the performance metrics for the stock.
+    str: A JSON string representing the performance metrics for the ticker.
     """
     # If the ticker starts with '$', remove it
     if ticker.startswith('$'):
         ticker = ticker[1:]
 
-    # Retrieve performance metrics from openbb.stocks.ca.screener
+    # Retrieve performance metrics from openbb.tickers.ca.screener
     df = openbb.stocks.ca.screener([ticker], data_type="performance")    
     
     # Convert performance metrics to percentages
@@ -156,14 +156,14 @@ def get_performance_metrics(ticker: str, statements: str) -> str:
 )
 def get_ownership_metrics(ticker: str, statements: str) -> str:
     """
-    This function retrieves the ownership metrics for a given stock ticker.
+    This function retrieves the ownership metrics for a given  ticker.
     
     Parameters:
     ticker (str): The ticker symbol for the stock. It can be prefixed with a '$' symbol.
     statements (str): Not used in the current function. It could be used to specify financial statements to retrieve.
     
     Returns:
-    str: A JSON string representing the ownership metrics for the stock.
+    str: A JSON string representing the ownership metrics for the ticker.
     """
     # If the ticker starts with '$', remove it
     if ticker.startswith('$'):
@@ -196,7 +196,7 @@ def get_technical_analysis_summary(ticker: str) -> str:
     ticker (str): The ticker symbol for the stock. It can be prefixed with a '$' symbol.
     
     Returns:
-    str: A string representing the summary of technical analysis for the stock.
+    str: A string representing the summary of technical analysis for the ticker.
     """
     # If the ticker starts with '$', remove it
     if ticker.startswith('$'):
@@ -208,7 +208,7 @@ def get_technical_analysis_summary(ticker: str) -> str:
        
 @command(
     "get_analyst_ratings",  # command name
-    "Get analyst ratings",  # command description
+    "Get analyst ratings for ticker",  # command description
     '"ticker": "<ticker>"',  # command argument in JSON format
 )
 def get_analyst_ratings(ticker: str) -> str:
@@ -240,48 +240,3 @@ def get_analyst_ratings(ticker: str) -> str:
     # Return the data
     return data
 
-@command(
-    "get_active_addresses",  # command name
-    "Retrieves the active addresses for a given cryptocurrency",  # command description
-    '"symbol": "<symbol>", "interval": "<interval>", "start_date": "<start_date>", "end_date": "<end_date>"' # command argument in JSON format
-)
-def get_active_addresses(symbol: str, interval: str, start_date: str, end_date: str) -> str:
-    """
-    This function retrieves the active addresses for a given cryptocurrency.
-
-    Parameters:
-    symbol (str): The symbol for the cryptocurrency.
-    interval (str): The interval for the active addresses data. Can be "24h", "7d", "30d", "3m", "6m", "1y", or "5y".
-    start_date (str): The starting date is a string in the format 'YYYY-MM-DD'.
-    end_date(str): The end date is a string in the format 'YYYY-MM-DD'.
-
-    Returns:
-    str: A JSON string representing the active addresses for the cryptocurrency.
-    """
-    active = openbb.crypto.dd.active(symbol=symbol, interval=interval, start_date=start_date, end_date=end_date)
-    json_string = active.to_json(orient='records')
-    data = json.dumps(json_string)
-    return data 
-
-@command(
-    "get_active_addresses",  # command name
-    "Retrieves the active addresses for a given cryptocurrency",  # command description
-    '"symbol": "<symbol>", "interval": "<interval>", "start_date": "<start_date>", "end_date": "<end_date>"' # command argument in JSON format
-)
-def get_active_addresses(symbol: str, interval: str, start_date: str, end_date: str) -> str:
-    """
-    This function retrieves the active addresses for a given cryptocurrency.
-
-    Parameters:
-    symbol (str): The symbol for the cryptocurrency.
-    interval (str): The interval for the active addresses data. Can be "24h", "7d", "30d", "3m", "6m", "1y", or "5y".
-    start_date (str): The starting date is a string in the format 'YYYY-MM-DD'.
-    end_date(str): The end date is a string in the format 'YYYY-MM-DD'.
-
-    Returns:
-    str: A JSON string representing the active addresses for the cryptocurrency.
-    """
-    active = openbb.crypto.dd.active(symbol=symbol, interval=interval, start_date=start_date, end_date=end_date)
-    json_string = active.to_json(orient='records')
-    data = json.dumps(json_string)
-    return data 
